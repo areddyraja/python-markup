@@ -1,0 +1,79 @@
+{% extends "index.html" %}
+{% block title %}BigData is where we are{% endblock %}
+{% block description %}I enjoy photography and video editing. Check out some of my work!{% endblock %}
+{% block content %}
+
+
+    <div class="container">
+        <!-- Marketing Icons Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h1 class="page-header">
+                </h1>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw" ></i>Cloud Services</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>High Availability, Continuity Services with Disaster Recovery. Enhanced Security Srevices. Be it AWS, Azure, Google or OpenStack, We have it All. </p><br>
+                        <a href="#/cloud" class="btn btn-default pull-right">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw"></i>BigData Services</h4>
+                    </div>
+                    <div class="panel-body">
+                        <p>Which framework should I use for my Business Case. Should I use hadoop?, Apache Spark?
+                        Which Storage should I use? Apache Cassandra?, Apache Hadoop and/or PostgresSQL?
+                        </p>
+                        <a href="#/bigdata" class="btn btn-default pull-right">Learn More</a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4">
+                <div class="panel panel-default">
+                    <div class="panel-heading">
+                        <h4><i class="fa fa-fw"></i>Analytics Services</h4>
+                    </div>
+                    <div class="panel-body">
+                        Can I predict my Customer life Time value? Is there a customer churn?
+                        Making data driven decisions data transformation modelling Visualization deployment and monitoring
+                        </p>
+                        <a href="#/analytics" class="btn btn-default pull-right" >Learn More</a>
+                    </div>
+                </div>
+            </div>
+           
+        </div>
+        <!-- /.row -->
+
+        <!-- Portfolio Section -->
+        <div class="row">
+            <div class="col-lg-12">
+                <h2 class="page-header">Portfolio</h2>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="/marketing-analytics/">
+                    <img class="img-resp(nsive img-portfolio img-hover" src="{{ url_for('static', filename = 'images/marketing3.jpg') }}" alt="">Marketing Analytics
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="#/risk-analytics">
+                    <img class="img-responsive img-portfolio img-hover" src="{{ url_for('static', filename = 'images/risk.jpg') }}" alt="">Risk Analytics
+                </a>
+            </div>
+            <div class="col-md-4 col-sm-6">
+                <a href="#/reco-analytics">
+                    <img class="img-responsive img-portfolio img-hover" src="{{url_for('static',filename='images/reco2.jpg')}}" alt="">Recommendations
+                </a>
+            </div>
+        </div>
+
+    </div>
+
+{% endblock %}

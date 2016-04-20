@@ -1,0 +1,135 @@
+
+    <nav class="navbar navbar-info navbar-fixed-top" role="navigation">
+        <div class="container">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+
+                <a class="navbar-brand" href="index.html">
+<img src="{{ url_for('static', filename = 'images/logo.png') }}">
+</a>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a href="index.html">Home</a>
+                    </li>
+
+                      <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Services <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="active">
+                                <a href="#/cloud">Cloud</a>
+                            </li>
+                            <li>
+                                <a href="#/bigdata">Big Data</a>
+                            </li>
+                            <li>
+                                <a href="#/analytics">Analytics</a>
+                            </li>
+                        </ul>
+                    </li>
+
+                   <!--  <li>
+                        <a href="services.html">Services</a>
+                    </li> -->
+
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Portfolio <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li class="active">
+                                <a href="#/marketing-analytics">Marketing Analytics</a>
+                            </li>
+                            <li>
+                                <a href="#/risk-analytics">Risk Analytics</a>
+                            </li>
+                            <li>
+                                <a href="#/reco-analytics">Recommendations</a>
+                            </li>
+                        </ul>
+                    </li>
+       
+
+
+
+
+                     <li>
+                        <a href="#/blogs">Blogs</a>
+                    </li>
+
+
+                   <!--  <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Blog <b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="blog-home-1.html">Blog Home 1</a>
+                            </li>
+                            <li>
+                                <a href="blog-home-2.html">Blog Home 2</a>
+                            </li>
+                            <li>
+                                <a href="blog-post.html">Blog Post</a>
+                            </li>
+                        </ul>
+                    </li> -->
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown">Resources<b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a href="#/hadoop">Apache Hadoop</a>
+                            </li>
+                            <li>
+                                <a href="#/machine-learning">Machine Learning</a>
+                            </li>
+
+                            <li>
+                                <a href="#/apache-spark">Apache Spark</a>
+                            </li>
+                             <li>
+                                <a href="#/docLayout">DocLayout</a>
+                            </li>
+                            
+                            <li>
+                                <a href="pricing.html">Visualizations</a>
+                            </li>
+                             <li>
+                                <a href="projects2.html">Projects</a>
+                            </li>
+                            
+                            
+                        </ul>
+                    </li>
+                                 <li>
+                        <a href="/aboutus">About</a>
+                    </li>
+                    <li>
+                        <a href="#/contact">Contact</a>
+                    </li>
+                    </li>
+                                 <li>
+                        <a href="#/login">LogIn</a>
+                    </li>
+                    </li>
+                                 <li>
+                        <a href="#/signup">SignUp</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        <!-- /.container -->
+    </nav>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".navbar-nav li a").click(function(event) {
+        $(".navbar-collapse").collapse('hide');
+        });
+    });
+</script>
