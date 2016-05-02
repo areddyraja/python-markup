@@ -13,6 +13,9 @@ FLATPAGES_AUTO_RELOAD = DEBUG
 FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 POST_DIR = 'posts'
+HADOOP_DIR = 'hadoop'
+MONGODB_DIR = 'mongodb'
+SPARK_DIR = 'spark'
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
@@ -80,6 +83,25 @@ def post(name):
     post = flatpages.get_or_404(path)
     return render_template('post.html', post=post)
 
+@app.route('/hadoop/<name>/')
+def hadoop(name):
+    path = '{}/{}'.format(HADOOP_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('post.html', post=post)
+
+
+@app.route('/mongodb/<name>/')
+def mongodb(name):
+    path = '{}/{}'.format(MONGODB_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('post.html', post=post)
+
+@app.route('/spark/<name>/')
+def spark(name):
+    path = '{}/{}'.format(SPARK_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('post.html', post=post)
+
 @app.route('/robots.txt')
 def robots():
     return render_template('robots.txt')
@@ -109,3 +131,4 @@ if __name__ == "__main__":
         freezer.freeze()
     else:
         app.run(host='0.0.0.0', port=8888, debug=True)
+
