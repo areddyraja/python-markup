@@ -16,6 +16,7 @@ POST_DIR = 'posts'
 HADOOP_DIR = 'hadoop'
 MONGODB_DIR = 'mongodb'
 SPARK_DIR = 'spark'
+FUSE_DIR = 'fuse'
 
 app = Flask(__name__)
 flatpages = FlatPages(app)
@@ -99,6 +100,12 @@ def mongodb(name):
 @app.route('/spark/<name>/')
 def spark(name):
     path = '{}/{}'.format(SPARK_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('post.html', post=post)
+
+@app.route('/fuse/<name>/')
+def fuse(name):
+    path = '{}/{}'.format(FUSE_DIR, name)
     post = flatpages.get_or_404(path)
     return render_template('post.html', post=post)
 
