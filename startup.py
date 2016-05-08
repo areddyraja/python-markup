@@ -6,6 +6,8 @@ from datetime import date
 from flask_flatpages import FlatPages, pygments_style_defs
 from flask_frozen import Freezer
 from flask import Markup
+from flask.ext.misaka import Misaka
+
 
 BASE_URL = 'http://www.jamesharding.ca'
 DEBUG = True
@@ -20,6 +22,7 @@ SPARK_DIR = 'spark'
 FUSE_DIR = 'fuse'
 
 app = Flask(__name__, static_url_path='/static')
+Misaka(app)
 flatpages = FlatPages(app)
 freezer = Freezer(app)
 

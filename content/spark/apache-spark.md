@@ -48,12 +48,13 @@ Most often Spark worked with key value pairs and hence Spark RDD is extended to 
 
 ###Installation
 The tutorial uses  Apache Spark 1.4.1
-* The following are the requisites.
-* Ubuntu 12 or 14
-* Apache Spark Installation
-* Open JDK 1.7
-* Scala 2.11.7
-* Python 2.7.3 for PySpark
+
+	* The following are the requisites.
+	* Ubuntu 12 or 14
+	* Apache Spark Installation
+	* Open JDK 1.7
+	* Scala 2.11.7
+	* Python 2.7.3 for PySpark
 
 Download Spark from the following URL <a href="http://spark.apache.org/downloads.html">Spark Downloads</a>
 Choose Package Type as "Pre-built for Hadoop 2.6 and later"
@@ -62,16 +63,16 @@ Choose Package Type as "Pre-built for Hadoop 2.6 and later"
 A quick example
 Invoking the spark-shell command.
 
-```
-cd SPARK_HOME (go to the installation directory of spark)
-bin/spark-shell
-```
+	:::text
+	cd SPARK_HOME (go to the installation directory of spark)
+	bin/spark-shell
+ 
+Type the following:
 
-```
-scala> val data = Array(1, 2, 3, 4, 5)
-data: Array[Int] = Array(1, 2, 3, 4, 5)
-scala> val rddData = sc.parallelize(data)
-```
+	:::text
+	scala> val data = Array(1, 2, 3, 4, 5)
+	data: Array[Int] = Array(1, 2, 3, 4, 5)
+	scala> val rddData = sc.parallelize(data)
 
 ####Development Environment with Eclipse
 FIX
@@ -86,12 +87,11 @@ sbt eclipse
 Map applies transformation function on each of the items in the RDD. The return value is also an RDD
 ####example 1
 
-```
-val fruits = sc.parallelize(List("orange", "apple", "kiwi", "kiwi", "rabbit", "avakado","mango", "grapes", "banana"), 3)
-val lengths = fruits.map(_.length)
-val fruit_lengths = fruits.zip(lengths)
-fruit_lengths.collect
-```
+	:::jinja
+	val fruits = sc.parallelize(List("orange", "apple", "kiwi", "kiwi", "rabbit", "avakado","mango", "grapes", "banana"), 3)
+	val lengths = fruits.map(_.length)
+	val fruit_lengths = fruits.zip(lengths)
+	fruit_lengths.collect
 
 ####example 2
 
@@ -130,77 +130,70 @@ x is the previous value, and y is the current value. x+y is the cumulative sum o
 ###ReduceByKey - tuples
 Reduces the given input. 
 
-```
-val views=sc.parallelize(List(
-   ("US",  "Nov", "News",  100, 300),
-   ("US",  "Dec", "BreakingBad",  200, 2000),
-   ("US",  "Jan", "BreakingBad", 300, 3002),
-   ("US",  "Mar", "Friends", 122, 1230),
-   ("US",  "Apr", "Friends", 10,100),
-   ("US",  "May", "Friends", 20, 200),
-   ("US",  "Jun", "The Robot", 122,150),
-   ("US",  "Jul", "The Robot", 12, 1043),
-   ("India",  "Dec", "The Robot",  200, 2048),
-   ("India",  "Jan", "BreakingBad", 300, 900),
-   ("India",  "Mar", "BreakingBad", 122, 366),
-   ("India",  "Apr", "Friends", 10, 30),
-   ("India",  "May", "The Robot", 20, 80),
-   ("India",  "Jun", "Friends", 122, 488),
-   ("India",  "Jul", "BruceLee", 122, 488)))
+	:::scala
+	val views=sc.parallelize(List(
+	   ("US",  "Nov", "News",  100, 300),
+	   ("US",  "Dec", "BreakingBad",  200, 2000),
+	   ("US",  "Jan", "BreakingBad", 300, 3002),
+	   ("US",  "Mar", "Friends", 122, 1230),
+	   ("US",  "Apr", "Friends", 10,100),
+	   ("US",  "May", "Friends", 20, 200),
+	   ("US",  "Jun", "The Robot", 122,150),
+	   ("US",  "Jul", "The Robot", 12, 1043),
+	   ("India",  "Dec", "The Robot",  200, 2048),
+	   ("India",  "Jan", "BreakingBad", 300, 900),
+	   ("India",  "Mar", "BreakingBad", 122, 366),
+	   ("India",  "Apr", "Friends", 10, 30),
+	   ("India",  "May", "The Robot", 20, 80),
+	   ("India",  "Jun", "Friends", 122, 488),
+	   ("India",  "Jul", "BruceLee", 122, 488)))
 
-val views_counts = views.map{case (country, month, program, likes, mins) => ((country,program),(likes, mins) )}.reduceByKey((x,y)=>((x._1+y._1),(x._2+y._2))).collect
+Let us get the counts
 
-views_counts: Array[((String, String), (Int, Int))] = Array(((India,The Robot),(220,2128)), ((US,BreakingBad),(500,5002)), ((US,News),(100,300)), ((India,Friends),(132,518)), ((India,BruceLee),(122,488)), ((US,Friends),(152,1530)), ((India,BreakingBad),(422,1266)), ((US,The Robot),(134,1193))
-```
+	:::scala
+	val views_counts = views.map{case (country, month, program, likes, mins) => ((country,program),(likes, mins) )}.reduceByKey((x,y)=>((x._1+y._1),(x._2+y._2))).collect
 
-How it works
+Here is the output
+
+	:::scala
+	views_counts: Array[((String, String), (Int, Int))] = Array(((India,The Robot),(220,2128)), ((US,BreakingBad),(500,5002)), ((US,News),(100,300)), ((India,Friends),(132,518)), ((India,BruceLee),(122,488)), ((US,Friends),(152,1530)), ((India,BreakingBad),(422,1266)), ((US,The Robot),(134,1193))
+
+####How it works
 The first step is to defnine a map that returns tuples.
 A key-value tuple is defined where key is also a tuple containing country and program. The value is also a tuple with likes and views.
 
-```
-views.map{case (country, month, program, likes, mins) => ((country,program),(likes, mins) )}
+	:::scala
+	views.map{case (country, month, program, likes, mins) => ((country,program),(likes, mins) )}
+
 The next step is to reduce values by key.
 The reduce function reduces the two values. x being the previus values and y being the current values. x and y are tuples, each containing (country,program),(likes, mins).
 Reduce is an associative operation and it works by adding two values first, and then take next set of values and keep adding till all the records are finished.
 
-```
-reduceByKey((x,y)=>((x._1+y._1),(x._2+y._2))
-```
+	:::scala
+	reduceByKey((x,y)=>((x._1+y._1),(x._2+y._2))
 
 ###groupBy
 
-```
-scala> case class Item(id:String, name:String, unit:Int, companyId:String)
+	:::scala
+	scala> case class Item(id:String, name:String, unit:Int, companyId:String)
+	scala> case class Company(companyId:String, name:String, city:String)
+	scala> val i1 = Item("1", "first", 2, "c1")
+	scala> val i2 = i1.copy(id="2", name="second")
+	scala> val i3 = i1.copy(id="3", name="third", companyId="c2")
+	scala> val items = sc.parallelize(List(i1,i2,i3))
+	items: org.apache.spark.rdd.RDD[Item] = ParallelCollectionRDD[14] at parallelize at <console>:20
+	scala> val c1 = Company("c1", "company-1", "city-1")
+	scala> val c2 = Company("c2", "company-2", "city-2")
+	scala> val companies = sc.parallelize(List(c1,c2))
+	scala> val groupedItems = items.groupBy( x => x.companyId) 
+	groupedItems: org.apache.spark.rdd.RDD[(String, Iterable[Item])] = ShuffledRDD[16] at groupBy at <console>:22
+	scala> val groupedComp = companies.groupBy(x => x.companyId)
+	groupedComp: org.apache.spark.rdd.RDD[(String, Iterable[Company])] = ShuffledRDD[18] at groupBy at <console>:20
+	scala> groupedItems.join(groupedComp).take(10).foreach(println)
 
-scala> case class Company(companyId:String, name:String, city:String)
-
-scala> val i1 = Item("1", "first", 2, "c1")
-
-scala> val i2 = i1.copy(id="2", name="second")
-
-scala> val i3 = i1.copy(id="3", name="third", companyId="c2")
-
-scala> val items = sc.parallelize(List(i1,i2,i3))
-items: org.apache.spark.rdd.RDD[Item] = ParallelCollectionRDD[14] at parallelize at <console>:20
-
-scala> val c1 = Company("c1", "company-1", "city-1")
-
-scala> val c2 = Company("c2", "company-2", "city-2")
-
-scala> val companies = sc.parallelize(List(c1,c2))
-
-scala> val groupedItems = items.groupBy( x => x.companyId) 
-groupedItems: org.apache.spark.rdd.RDD[(String, Iterable[Item])] = ShuffledRDD[16] at groupBy at <console>:22
-
-scala> val groupedComp = companies.groupBy(x => x.companyId)
-groupedComp: org.apache.spark.rdd.RDD[(String, Iterable[Company])] = ShuffledRDD[18] at groupBy at <console>:20
-
-scala> groupedItems.join(groupedComp).take(10).foreach(println)
-
-14/12/12 00:52:32 INFO DAGScheduler: Job 5 finished: take at <console>:35, took 0.021870 s
-(c1,(CompactBuffer(Item(1,first,2,c1), Item(2,second,2,c1)),CompactBuffer(Company(c1,company-1,city-1))))
-(c2,(CompactBuffer(Item(3,third,2,c2)),CompactBuffer(Company(c2,company-2,city-2))))
-```
+	14/12/12 00:52:32 INFO DAGScheduler: Job 5 finished: take at <console>:35, took 0.021870 s
+	(c1,(CompactBuffer(Item(1,first,2,c1), Item(2,second,2,c1)),CompactBuffer(Company(c1,company-1,city-1))))
+	(c2,(CompactBuffer(Item(3,third,2,c2)),CompactBuffer(Company(c2,company-2,city-2))))
 
 ###Multi Columns Map/Reduce with Apache Spark
 
