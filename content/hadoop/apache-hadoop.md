@@ -10,7 +10,7 @@ tags: programming, hadoop, bigdata, yarn
 5. [Getting Started](/hadoop/getting-started/).
 6. [Getting Started](/hadoop/getting-started/).
 
-ttp://github.com - automatic!
+http://github.com - automatic!
 For years, I used and adored Wordpress as my go-to blogging platform. It was quick to install, easy to use, and had a ton of <s>bloat</s> functionality that I simply never used. Flask has been my framework of choice when starting a new web project for a while now, and I wanted a dead-simple solution for managing my mostly static site and handling my _occasional_ writing.  I had the following requirements:
 
 * Must build into static site

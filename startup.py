@@ -18,7 +18,7 @@ MONGODB_DIR = 'mongodb'
 SPARK_DIR = 'spark'
 FUSE_DIR = 'fuse'
 
-app = Flask(__name__)
+app = Flask(__name__, static_url_path='/static')
 flatpages = FlatPages(app)
 freezer = Freezer(app)
 
@@ -34,7 +34,7 @@ def pygments_css():
 
 @app.route("/")
 def home():
-    return render_template('home.html')
+    return render_template('index.html')
 
 @app.route("/katerina/")
 def katerina():
@@ -88,7 +88,7 @@ def post(name):
 def hadoop(name):
     path = '{}/{}'.format(HADOOP_DIR, name)
     post = flatpages.get_or_404(path)
-    return render_template('post.html', post=post)
+    return render_template('hadoop_template.html', post=post)
 
 
 @app.route('/mongodb/<name>/')
