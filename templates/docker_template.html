@@ -1,0 +1,73 @@
+{% extends "base_template.html" %}
+            {% block title %}{{ post.title }}{% endblock %}
+            {% block description %}{{ post.description }}{% endblock %}
+
+		{% block rightsidebar %}
+		     <div class="col-md-2 text-left mg pd">
+			<li>
+			<a href="/docker/getting-started">Getting Started</a>
+                        </li>
+			<li>
+			<a href="/docker/alpine">Alpine Linux</a>
+                        </li>
+			<li>
+			<a href="/docker/images">Docker Images</a>
+                        </li>
+			<li>
+			<a href="/docker/registry">Docker Registry</a>
+                        </li>
+			<li>
+			<a href="/docker/networking">Docker Networking</a>
+                        </li>
+			<li>
+			<a href="/docker/volumes">Docker Volumes</a>
+                        </li>
+			<li>
+			<a href="/docker/apis">Docker APIs</a>
+                        </li>
+			<li>
+			<a href="/docker/containers">Linking Containers</a>
+                        </li>
+			<li>
+			<a href="/docker/microservices">Docker Micro Services</a>
+                        </li>
+			<li>
+			<a href="/docker/security">Docker Security</a>
+                        </li>
+			<li>
+			<a href="/docker/apps">Docker Applications</a>
+                        </li>
+			<li>
+			<a href="/docker/kubernetes">Kubernetes</a>
+                        </li>
+		     </div>
+		{% endblock %}
+
+            {% block content %}
+            <div class="title">
+                <div class="container-fluid">
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                </div>
+                    <div id="post" class="eight columns card">
+                        {{ post.html|safe }}
+                    </div>
+
+            </div>
+
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $('#post a').attr('target','_blank');
+            });
+            </script>
+            {% endblock %}
+
+
+
+
+

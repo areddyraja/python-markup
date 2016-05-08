@@ -14,6 +14,7 @@ FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 POST_DIR = 'posts'
 HADOOP_DIR = 'hadoop'
+DOCKER_DIR = 'docker'
 MONGODB_DIR = 'mongodb'
 SPARK_DIR = 'spark'
 FUSE_DIR = 'fuse'
@@ -83,6 +84,12 @@ def post(name):
     path = '{}/{}'.format(POST_DIR, name)
     post = flatpages.get_or_404(path)
     return render_template('post.html', post=post)
+
+@app.route('/docker/<name>/')
+def docker(name):
+    path = '{}/{}'.format(DOCKER_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('docker_template.html', post=post)
 
 @app.route('/hadoop/<name>/')
 def hadoop(name):
