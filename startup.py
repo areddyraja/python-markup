@@ -112,7 +112,7 @@ def vagrant(name):
 def cassandra(name):
     path = '{}/{}'.format(CASSANDRA_DIR, name)
     post = flatpages.get_or_404(path)
-    return render_template('post.html', post=post)
+    return render_template('cassandra_template.html', post=post)
 
 @app.route('/mongodb/<name>/')
 def mongodb(name):
