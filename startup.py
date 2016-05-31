@@ -16,6 +16,7 @@ FLATPAGES_EXTENSION = '.md'
 FLATPAGES_ROOT = 'content'
 POST_DIR = 'posts'
 HADOOP_DIR = 'hadoop'
+VAGRANT_DIR = 'vagrant'
 DOCKER_DIR = 'docker'
 MONGODB_DIR = 'mongodb'
 SPARK_DIR = 'spark'
@@ -100,6 +101,12 @@ def hadoop(name):
     post = flatpages.get_or_404(path)
     return render_template('hadoop_template.html', post=post)
 
+@app.route('/vagrant/<name>/')
+def vagrant(name):
+    path = '{}/{}'.format(VAGRANT_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('vagrant-template.html', post=post)
+
 
 @app.route('/mongodb/<name>/')
 def mongodb(name):
@@ -111,7 +118,7 @@ def mongodb(name):
 def spark(name):
     path = '{}/{}'.format(SPARK_DIR, name)
     post = flatpages.get_or_404(path)
-    return render_template('post.html', post=post)
+    return render_template('spark-template.html', post=post)
 
 @app.route('/fuse/<name>/')
 def fuse(name):
@@ -147,5 +154,5 @@ if __name__ == "__main__":
     if len(sys.argv) > 1 and sys.argv[1] == "build":
         freezer.freeze()
     else:
-        app.run(host='0.0.0.0', port=8888, debug=True)
+        app.run(host='0.0.0.0', port=7777, debug=True)
 

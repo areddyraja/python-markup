@@ -4,6 +4,9 @@ description: JBoss Fuse tutorial
 tags: JBoss, Fuse, ESB, programming,Apache CXF, Apache Karaf, OSGI
 
 
+###Overview
+JBoss Fuse is an integration platform which uses an Enterprise Service Bus.  It is light weight and and promotes modularity.  It combines the technologies of Apache Camel, Apache CXF. Apache A-MQ, Apache Karaf, and Fabric into one distribution. Currently, you can run the Fuse in the traditional way on Karaf or on JBoss EAP.  However, running Fuse on EAP has many limitations and does not contain full capabilities. 
+
 ##JBoss ESB
 ESB is a standards based integration platform that unifies messaging, web services, data transformation and routing. ESB connects and coordinates different applications across the enterprise with transactional integrity.
 

@@ -1,0 +1,91 @@
+{% extends "base_template.html" %}
+            {% block title %}{{ post.title }}{% endblock %}
+            {% block description %}{{ post.description }}{% endblock %}
+
+		{% block rightsidebar %}
+		     <div class="col-md-2 text-left mg pd">
+			<li>
+			<a href="/spark/overview">Overview</a>
+                        </li>
+			<li>
+			<a href="/spark/getting-started">Getting Started</a>
+                        </li>
+			<li>
+			<a href="/spark/map">Map</a>
+                        </li>
+			<li>
+			<a href="/spark/reduce">Reduce</a>
+                        </li>
+			<li>
+			<a href="/spark/filter">Filter</a>
+                        </li>
+			<li>
+			<a href="/spark/distinct">Distinct</a>
+                        </li>
+			<li>
+			<a href="/spark/union">Union</a>
+                        </li>
+			<li>
+			<a href="/spark/intersection">Intersection</a>
+                        </li>
+			<li>
+			<a href="/spark/sortbykey">SortBy Key</a>
+                        </li>
+			<li>
+			<a href="/spark/join">Join</a>
+                        </li>
+ 			<li>
+			<a href="/spark/reduceby-key">ReduceBy Key</a>
+                        </li>
+			<li>
+			<a href="/spark/aggregate">Aggregate</a>
+                        </li>
+			<li>
+			<a href="/spark/group">Group By</a>
+                        </li>
+			<li>
+			<a href="/spark/scala-spark">Scala and Spark</a>
+                        </li>
+			<li>
+			<a href="/spark/cassandra">Spark With Cassandra</a>
+                        </li>
+			<li>
+			<a href="/spark/spark-sql">Spark SQL</a>
+                        </li>
+			<li>
+			<a href="/spark/machine-learning">Machine Learning</a>
+                        </li>
+			<li>
+			<a href="/spark/pyspark">Apache Py Spark</a>
+                        </li>
+		     </div>
+		{% endblock %}
+
+            {% block content %}
+            <div class="title">
+                <div class="container-fluid">
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                </div>
+                    <div id="post" class="eight columns card">
+                        {{ post.html|safe }}
+                    </div>
+
+            </div>
+
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $('#post a').attr('target','_blank');
+            });
+            </script>
+            {% endblock %}
+
+
+
+
+

@@ -74,26 +74,7 @@ Load this data into hdfs under the path /pig-data/emp_data.
 
 $ hadoop fs -put emp_data /pig-data
 Next we will create a UDF which converts the names into Upper case.
- 1
- 2
- 3
- 4
- 5
- 6
- 7
- 8
- 9
-10
-11
-12
-13
-14
-15
-16
-17
-18
-19
-20
+
         package myudfs;
         import java.io.IOException;
         import org.apache.pig.EvalFunc;
