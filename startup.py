@@ -21,6 +21,7 @@ DOCKER_DIR = 'docker'
 MONGODB_DIR = 'mongodb'
 SPARK_DIR = 'spark'
 FUSE_DIR = 'fuse'
+CASSANDRA_DIR='cassandra'
 
 app = Flask(__name__, static_url_path='/static')
 Misaka(app)
@@ -107,6 +108,11 @@ def vagrant(name):
     post = flatpages.get_or_404(path)
     return render_template('vagrant-template.html', post=post)
 
+@app.route('/cassandra/<name>/')
+def cassandra(name):
+    path = '{}/{}'.format(CASSANDRA_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('post.html', post=post)
 
 @app.route('/mongodb/<name>/')
 def mongodb(name):
