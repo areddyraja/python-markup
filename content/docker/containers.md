@@ -1,3 +1,8 @@
+title: Docker Containers
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
+
 Docker Link Flag
 
 In order to connect together multiple docker containers or services running inside docker container, ‘–link’ flag can be used in order to securely connect and provide a channel to transfer information from one container to another. The below example shows a simple application of using a Wordpress container linked to MySQL container.

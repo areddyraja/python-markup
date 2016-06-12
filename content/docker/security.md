@@ -1,6 +1,9 @@
-Docker Security CIS Benchmark
+title: Docker Security
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
 
-The following tutorial is an extension of the Center for Internet Security (CIS) benchmark, CIS DOCKER 1.6 BENCHMARK V1.0.0 published by Pravin Goyal <pgoyal@vmware.com>, Staff Engineer, VMware. In this tutorial we will be covering all the important guidelines to run docker containers in secured environment.
+In this tutorial we will be covering all the important guidelines to run docker containers in secured environment.
 
 Host Configuration
 

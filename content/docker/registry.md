@@ -1,4 +1,7 @@
-Docker Registry
+title: Docker Registry
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
 
 Docker allows to bundle and push the customized images on the docker hub or locally hosted docker registry. Images can be pushed or pull from this registry.
 

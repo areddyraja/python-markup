@@ -1,3 +1,8 @@
+title: Docker APIs
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
+
 Golang : Container Lifecycle Management
 
 In this tutorial we look at how golang can be used to access Docker Daemon API Endpoint and manage containers.

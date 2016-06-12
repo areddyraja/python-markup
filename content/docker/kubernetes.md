@@ -1,3 +1,8 @@
+title: Docker with Kubernetes
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
+
 Getting Started
 
 Installation

@@ -1,3 +1,8 @@
+title: Docker MicroServices
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
+
 Dockerize Simple Flask App
 
 In this tutorial you will learn how to create a simple Flask App and run it inside a docker container

@@ -1,3 +1,8 @@
+title: Docker Volumes
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
+
 Get Started with Volumes
 
 In this lab we learn how to create a basic docker volume and mount it in a container

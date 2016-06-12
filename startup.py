@@ -17,6 +17,9 @@ FLATPAGES_ROOT = 'content'
 POST_DIR = 'posts'
 HADOOP_DIR = 'hadoop'
 VAGRANT_DIR = 'vagrant'
+TERRAFORM_DIR = 'terraform'
+ELK_DIR = 'elk'
+MYSQL_DIR = 'mysql'
 DOCKER_DIR = 'docker'
 MONGODB_DIR = 'mongodb'
 SPARK_DIR = 'spark'
@@ -101,6 +104,24 @@ def hadoop(name):
     path = '{}/{}'.format(HADOOP_DIR, name)
     post = flatpages.get_or_404(path)
     return render_template('hadoop_template.html', post=post)
+
+@app.route('/mysql/<name>/')
+def mysql(name):
+    path = '{}/{}'.format(MYSQL_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('mysql-template.html', post=post)
+
+@app.route('/elk/<name>/')
+def elk(name):
+    path = '{}/{}'.format(ELK_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('elk-template.html', post=post)
+
+@app.route('/terraform/<name>/')
+def terraform(name):
+    path = '{}/{}'.format(TERRAFORM_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('terraform-template.html', post=post)
 
 @app.route('/vagrant/<name>/')
 def vagrant(name):

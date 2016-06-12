@@ -1,3 +1,8 @@
+title: Docker Apps
+date: 2016-05-02
+description: A tutorial on Docker
+tags: docker, kubernets, spark, programming, hadoop, bigdata, yarn
+
 Static site on Apache server from Docker
 
 In this lab we learn how to host a static site running on Apache server hosted by Docker
