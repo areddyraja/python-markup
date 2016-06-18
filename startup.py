@@ -18,6 +18,7 @@ POST_DIR = 'posts'
 HADOOP_DIR = 'hadoop'
 VAGRANT_DIR = 'vagrant'
 TERRAFORM_DIR = 'terraform'
+PUPPET_DIR = 'puppet'
 ELK_DIR = 'elk'
 MYSQL_DIR = 'mysql'
 DOCKER_DIR = 'docker'
@@ -110,6 +111,12 @@ def mysql(name):
     path = '{}/{}'.format(MYSQL_DIR, name)
     post = flatpages.get_or_404(path)
     return render_template('mysql-template.html', post=post)
+
+@app.route('/puppet/<name>/')
+def puppet(name):
+    path = '{}/{}'.format(ELK_DIR, name)
+    post = flatpages.get_or_404(path)
+    return render_template('puppet-template.html', post=post)
 
 @app.route('/elk/<name>/')
 def elk(name):
