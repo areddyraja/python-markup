@@ -1,0 +1,52 @@
+{% extends "base_template.html" %}
+            {% block title %}{{ post.title }}{% endblock %}
+            {% block description %}{{ post.description }}{% endblock %}
+
+		{% block rightsidebar %}
+		     <div class="col-md-2 text-left mg pd">
+			<li>
+			<a href="/puppet/puppet">About Puppet</a>
+                        </li>
+			<li>
+			<a href="/puppet/hiera">About Hiera</a>
+                        </li>
+			<li>
+			<a href="/puppet/puppet-config">Basic Tutorial on Puppet</a>
+                        </li>
+			<li>
+			<a href="/puppet/ntp-example">Hiera Tutorial </a>
+                        </li>
+			<li>
+			<a href="/puppet/roles_profiles">Roles and Profiles</a>
+                        </li>
+		     </div>
+		{% endblock %}
+
+            {% block content %}
+            <div class="title">
+                <div class="container-fluid">
+                    <h2>
+                        {{ post.title }}
+                    </h2>
+                </div>
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                </div>
+                    <div id="post" class="eight columns card">
+                        {{ post.html|safe }}
+                    </div>
+
+            </div>
+
+            <script type="text/javascript">
+            $(document).ready(function(){
+                $('#post a').attr('target','_blank');
+            });
+            </script>
+            {% endblock %}
+
+
+
+
+

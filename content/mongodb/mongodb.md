@@ -27,14 +27,14 @@ Start the Mongo Client
 #### Insert Data
 
 	:::text
-> db.blog.insert(post)
-WriteResult({ "nInserted" : 1 })
-> db.blog.find()
-{ "_id" : ObjectId("5513784b5f861963b603b217"),
-  "title" : "My Blog Post",
-  "content" : "Here's my blog post.",
-  "date" : ISODate("2015-03-26T03:07:16.440Z")
-}
+	> db.blog.insert(post)
+	WriteResult({ "nInserted" : 1 })
+	> db.blog.find()
+	{ "_id" : ObjectId("5513784b5f861963b603b217"),
+	  "title" : "My Blog Post",
+	  "content" : "Here's my blog post.",
+	  "date" : ISODate("2015-03-26T03:07:16.440Z")
+	}
 
 
 #### Access elements in a document
@@ -53,6 +53,17 @@ WriteResult({ "nInserted" : 1 })
 	  "date" : ISODate("2015-03-26T03:07:16.440Z"),
 	  "comments" : [ ]
 	}
+
+#### Finding specific elements
+
+	:::text
+	>db.blog.find({title:'My Blog Post'})
+	{ "_id" : ObjectId("5513784b5f861963b603b217"),
+          "title" : "My Blog Post",
+          "content" : "Here's my blog post.",
+          "date" : ISODate("2015-03-26T03:07:16.440Z"),
+          "comments" : [ ]
+        }
 
 #### Remove a Document
 

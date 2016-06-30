@@ -114,7 +114,7 @@ def mysql(name):
 
 @app.route('/puppet/<name>/')
 def puppet(name):
-    path = '{}/{}'.format(ELK_DIR, name)
+    path = '{}/{}'.format(PUPPET_DIR, name)
     post = flatpages.get_or_404(path)
     return render_template('puppet-template.html', post=post)
 

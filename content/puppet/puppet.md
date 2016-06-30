@@ -150,3 +150,66 @@ A sample facter output on a VM is shown below:
 	uuid => 48216504-7D2B-4A2A-8CF3-40164F63913A
 	virtual => kvm
 
+
+
+##### Defining classes
+Defining a class makes it available for later use. It doesn’t yet add any resources to the catalog; to do that, you must declare it (see below) or assign it from an ENC.
+
+A class with no parameters
+
+	:::text
+	class base::linux {
+	  file { '/etc/passwd':
+	    owner => 'root',
+	    group => 'root',
+	    mode  => '0644',
+	  }
+	  file { '/etc/shadow':
+	    owner => 'root',
+	    group => 'root',
+	    mode  => '0440',
+	  }
+	}
+
+
+A class with parameters
+
+	:::text
+	class apache (String $version = 'latest') {
+	  package {'httpd':
+	    ensure => $version, # Using the class parameter from above
+	    before => File['/etc/httpd.conf'],
+	  }
+	  file {'/etc/httpd.conf':
+	    ensure  => file,
+	    owner   => 'httpd',
+	    content => template('apache/httpd.conf.erb'), # Template from a module
+	  }
+	  service {'httpd':
+	    ensure    => running,
+	    enable    => true,
+	    subscribe => File['/etc/httpd.conf'],
+	  }
+	}
+
+The general form of a class definition is:
+
+* The class keyword
+* The name of the class
+* An optional parameter list
+* Optionally, the inherits keyword followed by a single class name
+* An opening curly brace
+* A block of arbitrary Puppet code, which generally contains at least one resource declaration
+* A closing curly brace
+
+#### Class parameters and variables
+Parameters allow a class to request external data. If a class needs to configure itself with data other than facts, that data should usually enter the class via a parameter.
+
+Each class parameter can be used as a normal variable inside the class definition. The values of these variables are not set with normal assignment statements or looked up from top or node scope; instead, they are set based on user input when the class is declared.
+
+Note that if a class parameter lacks a default value, the module’s user must set a value themselves (either in their external data or an override). As such, you should supply defaults wherever possible.
+
+Each parameter can be preceeded by an optional data type. If you include one, Puppet will check the parameter’s value at runtime to make sure that it has the right data type, and raise an error if the value is illegal. If no data type is provided, the parameter will accept values of any data type.
+
+The special variables $title and $name are both set to the class name automatically, so they can’t be used as parameters.
+

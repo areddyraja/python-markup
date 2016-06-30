@@ -30,6 +30,18 @@ Use this file to configure the hierarchy, which backend(s) to use, and settings 
 
 Hiera will fail with an error if the config file can’t be found, although an empty config file is allowed.
 
+#### What can you do with Hiera
+* Express Organizational Information
+* Classify Nodes With Hiera
+* Describing Our Environment
+
+Without Hiera, we might find ourselves adding organizational data to our module code as default parameter values, reducing how shareable it is. We might find ourselves repeating configuration data in our site manifests to cover minor differences in configuration between nodes.
+
+With Hiera, we can move these decisions into a hierarchy built around the facts that drive these decisions, increase sharability, and repeat ourselves less.
+
+We can also use Hiera to assign classes to nodes using the hiera_include function, adding a single line to our site.pp manifest, then assigning classes to nodes within Hiera instead of within our site manifests. This can be a useful shortcut when we’re explicitly assigning classes to specific nodes within Hiera, but it becomes very powerful when we implicitly assign classes based on a node’s characteristics.
+
+
 #### Location
 By default, the config file is:
 
@@ -156,4 +168,35 @@ The directory in which to find data source files. This must be a string.
 You can interpolate variables into the datadir using %{variable} interpolation tokens. This allows you to, for example, point it at "/etc/puppetlabs/code/hieradata/%{::environment}" to keep your production and development data entirely separate.
 
 Default value: "/etc/puppetlabs/code/environments/%{environment}/hieradata" on *nix, and "C:\ProgramData\PuppetLabs\code\environments\%{environment}\hieradata" on Windows.
+
+#### Installing Hiera
+On ubuntu OS, you can easily install hiera-puppet package using the default package manager apt-get as shown below.
+
+	:::text
+	apt-get install hiera-puppet
+ 
+Similarly on a red-hat system, you can install hiera-puppet using the yum package manager, as shown below.
+
+	:::text
+	yum install hiera-puppet
+ 
+Please note the fact that, to install the above package, you need to have puppet lab's package repositories to be enabled(do not do anything if you already have a running puppet 2.7 master on your server). You can find a excellent guide to do this on the official puppet lab's tutorial.
+
+After this, we need to install hiera gem
+
+	:::text
+	gem install hiera
+	Fetching: hiera-1.3.2.gem (100%)
+	Successfully installed hiera-1.3.2
+	1 gem installed
+	Installing ri documentation for hiera-1.3.2...
+	Installing RDoc documentation for hiera-1.3.2...
+	root@puppet:~#
+
+##### Configuring for the Command Line
+The Hiera command line tool is useful when you’re in the process of designing and testing your hierarchy. You can use it to mock in facts for Hiera to look up without having to go through cumbersome trial-and-error Puppet runs.
+
+This version of Hiera uses the same default config file on the command line as it does via Puppet, so your existing config should already work.
+
+
 
