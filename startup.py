@@ -146,7 +146,7 @@ def cassandra(name):
 def mongodb(name):
     path = '{}/{}'.format(MONGODB_DIR, name)
     post = flatpages.get_or_404(path)
-    return render_template('post.html', post=post)
+    return render_template('mongodb-template.html', post=post)
 
 @app.route('/spark/<name>/')
 def spark(name):
